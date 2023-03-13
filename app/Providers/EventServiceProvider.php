@@ -6,6 +6,10 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
+use SocialiteProviders\Bitbucket\BitbucketExtendSocialite;
+use SocialiteProviders\GitHub\GitHubExtendSocialite;
+use SocialiteProviders\GitLab\GitLabExtendSocialite;
+use SocialiteProviders\Manager\SocialiteWasCalled;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -18,6 +22,12 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+
+        SocialiteWasCalled::class => [
+            GitHubExtendSocialite::class . '@handle',
+            GitLabExtendSocialite::class . '@handle',
+            BitbucketExtendSocialite::class . '@handle',
+        ]
     ];
 
     /**
