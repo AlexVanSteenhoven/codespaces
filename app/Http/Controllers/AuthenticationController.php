@@ -2,44 +2,52 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\JsonResponse;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Illuminate\View\View;
 use Laravel\Socialite\Facades\Socialite;
+use Laravel\Socialite\Two\InvalidStateException;
 
 class AuthenticationController extends Controller
 {
-    public function githubLogin(): RedirectResponse
+    public function index(): View
     {
-        return Socialite::driver('github')->stateless()->redirect();
+        return view('pages.auth.login');
     }
 
-    public function githubRedirect()
+    public function redirect(string $provider)
     {
-        // TODO: Yet to be implemented
-        $user = Socialite::driver('github')->stateless()->user();
-        dd($user);
+        try {
+            return Socialite::driver($provider)->redirect();
+        } catch (InvalidStateException $exception) {
+            return Socialite::driver($provider)->stateless()->redirect();
+        }
     }
 
-    public function gitlabLogin(): RedirectResponse
+    public function callback(string $provider): RedirectResponse
     {
-        return Socialite::driver('gitlab')->stateless()->redirect();
-    }
+        try {
+            $retrievedUser = Socialite::driver($provider)->user();
+        } catch (InvalidStateException $exception) {
+            $retrievedUser = Socialite::driver($provider)->stateless()->user();
+        }
 
-    public function gitlabRedirect()
-    {
-        // TODO: Yet to be implemented
-        $user = Socialite::driver('gitlab')->stateless()->user();
-    }
+        $user = User::updateOrCreate([
+            'provider' => $provider,
+            'provider_id' => $retrievedUser->id
+        ], [
+            'name' => $retrievedUser->name,
+            'email' => $retrievedUser->email,
+            'avatar' => $retrievedUser->avatar,
+            'provider_token' => $retrievedUser->token,
+            'password' => Hash::make(Str::password(16))
+        ]);
 
-    public function bitbucketLogin(): RedirectResponse
-    {
-        return Socialite::driver('bitbucket')->stateless()->redirect();
-    }
+        Auth::login($user, true);
 
-    public function bitbucketRedirect()
-    {
-        // TODO: Yet to be implemented
-        $user = Socialite::driver('bitbucket')->stateless()->user();
+        return redirect('/dashboard');
     }
 }

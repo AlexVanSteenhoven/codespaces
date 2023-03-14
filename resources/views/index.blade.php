@@ -12,6 +12,6 @@
     @vite('resources/css/app.css')
 </head>
 <body>
-    <div id="app"></div>
+    <div id="app" class="h-screen bg-neutral-100"></div>
 </body>
 </html>

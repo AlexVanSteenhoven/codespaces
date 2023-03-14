@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthenticationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,4 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () { return view('index'); });
+Route::get('/', function () { return view('pages.home'); });
+Route::get('/dashboard', function () { return view('pages.dashboard'); });
+
+// Authentication Routes
+Route::get('/sign-in', [AuthenticationController::class, 'index'])->name('auth.login');
+Route::get('/sign-up', [AuthenticationController::class, 'create'])->name('auth.register');
+Route::get('/sign-in/{provider}/redirect', [AuthenticationController::class, 'redirect'])->name('auth.redirect');
+Route::get('/sign-in/{provider}/callback', [AuthenticationController::class, 'callback'])->name('auth.callback');

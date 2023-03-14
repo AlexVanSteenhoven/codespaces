@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('provider');
+            $table->string('provider_id')->nullable();
+            $table->string('provider_token')->nullable();
+            $table->string('avatar')->default('https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png');
         });
     }
 
@@ -23,6 +26,9 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->removeColumn('provider');
+            $table->removeColumn('provider_id');
+            $table->removeColumn('provider_token');
+            $table->removeColumn('avatar');
         });
     }
 };
