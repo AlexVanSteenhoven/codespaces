@@ -50,4 +50,11 @@ class AuthenticationController extends Controller
 
         return redirect('/dashboard');
     }
+
+    public function logout(): RedirectResponse
+    {
+        Auth::logout();
+
+        return redirect('/');
+    }
 }
