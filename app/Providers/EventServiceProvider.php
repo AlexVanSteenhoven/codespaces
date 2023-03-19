@@ -26,7 +26,6 @@ class EventServiceProvider extends ServiceProvider
         SocialiteWasCalled::class => [
             GitHubExtendSocialite::class . '@handle',
             GitLabExtendSocialite::class . '@handle',
-            BitbucketExtendSocialite::class . '@handle',
         ]
     ];
 
