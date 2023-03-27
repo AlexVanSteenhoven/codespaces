@@ -9,9 +9,18 @@
 
         @yield('metadata')
         @vite('resources/css/app.css')
+
+        <script>
+            if (
+                localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark')
+            }
+        </script>
     </head>
     <body>
-        <div class="h-screen bg-neutral-100">
+        <div class="bg-neutral-100 bg-neutral-100 dark:bg-gray-900">
             @yield('content')
         </div>
 

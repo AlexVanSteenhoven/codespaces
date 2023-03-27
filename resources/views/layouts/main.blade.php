@@ -9,9 +9,20 @@
 
         @yield('metadata')
         @vite('resources/css/app.css')
+
+        <script>
+            if (
+                localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark')
+            }
+        </script>
     </head>
-    <body>
-        <div class="h-screen bg-neutral-100">
+    <body class="bg-neutral-100 dark:bg-gray-900">
+        @include('partials.navbar')
+
+        <div class="container flex flex-wrap items-center justify-between mx-auto">
             @yield('content')
         </div>
 
