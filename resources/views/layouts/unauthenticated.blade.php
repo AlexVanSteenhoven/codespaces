@@ -20,7 +20,8 @@
         </script>
     </head>
     <body>
-        <div class="bg-neutral-100 bg-neutral-100 dark:bg-gray-900">
+        @include('partials.alerts')
+        <div class="bg-indigo-100 dark:bg-gray-900">
             @yield('content')
         </div>
 

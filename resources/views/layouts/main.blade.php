@@ -19,12 +19,12 @@
             }
         </script>
     </head>
-    <body class="bg-neutral-100 dark:bg-gray-900">
+    <body class="bg-orange-50 dark:bg-gray-900">
         @include('partials.navbar')
 
-        <div class="container flex flex-wrap items-center justify-between mx-auto">
+        <main class="container flex flex-wrap items-center justify-between mx-auto">
             @yield('content')
-        </div>
+        </main>
 
         @vite('resources/js/app.js')
     </body>
