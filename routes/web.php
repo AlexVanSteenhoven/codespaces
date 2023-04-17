@@ -20,6 +20,8 @@ Route::view('/','pages.home')->name('home');
 // Authentication Routes
 Route::get('/sign-in', [AuthenticationController::class, 'index'])->name('auth.login');
 Route::get('/sign-up', [AuthenticationController::class, 'create'])->name('auth.register');
+Route::get('/sign-out', [AuthenticationController::class, 'logout'])->name('auth.logout');
+Route::post('/sign-in/email', [AuthenticationController::class, 'login'])->name('auth.sign-in'); // TODO :: Fix breaking bug (redirect to 419 page expired)
 Route::get('/sign-in/{provider}/redirect', [AuthenticationController::class, 'redirect'])->name('auth.redirect');
 Route::get('/sign-in/{provider}/callback', [AuthenticationController::class, 'callback'])->name('auth.callback');
 
