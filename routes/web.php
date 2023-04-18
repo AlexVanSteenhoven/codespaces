@@ -29,3 +29,4 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', [ DashboardController::class, 'index']);
 });
 
+require __DIR__.'/admin.php';
