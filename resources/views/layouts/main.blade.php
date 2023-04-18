@@ -19,8 +19,9 @@
             }
         </script>
     </head>
-    <body class="bg-orange-50 dark:bg-gray-900">
+    <body class="bg-indigo-100 dark:bg-gray-900">
         @include('partials.navbar')
+        @include('partials.alerts')
 
         <main class="container flex flex-wrap items-center justify-between mx-auto">
             @yield('content')

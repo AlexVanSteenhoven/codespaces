@@ -1,17 +1,7 @@
-{{--<div x-data="{ show: true }" x-show="show" class="flex p-4 mb-4 border-t-4 {{ $typeStyles() }}" role="alert">--}}
-{{--    <div class="ml-3 text-sm font-medium">--}}
-{{--        {{ $message }}--}}
-{{--    </div>--}}
-{{--    <button x-on:click="show = false" type="button" class="ml-auto -mx-1.5 -my-1.5 {{ $typeStyles() }}" aria-label="Close">--}}
-{{--        <span class="sr-only">Dismiss</span>--}}
-{{--        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>--}}
-{{--    </button>--}}
-{{--</div>--}}
-
 @switch($type)
     @case('info')
-        <div x-data="{ show: true }" x-show="show">
-            <div class="text-sm rounded-md shadow-lg mb-3 ml-3 ml-3 text-blue-800 bg-blue-50 border-blue-800 dark:bg-gray-800 dark:text-blue-400" role="alert">
+        <div data-component="alert" x-data="{ show: true }" x-show="show">
+            <div class="text-sm rounded-md shadow-lg mb-3 ml-3 text-blue-800 bg-blue-50 border-blue-800 dark:bg-gray-800 dark:text-blue-400" role="alert">
                 <div class="flex p-4 mr-auto">
                     {{ $message }}
 
@@ -29,8 +19,8 @@
         @break
 
     @case('error')
-        <div x-data="{ show: true }" x-show="show">
-            <div class="text-sm rounded-md shadow-lg mb-3 ml-3 ml-3 text-red-800 bg-red-50 border-red-800 dark:bg-gray-800 dark:text-red-400" role="alert">
+        <div data-component="alert" x-data="{ show: true }" x-show="show">
+            <div class="text-sm rounded-md shadow-lg mb-3 ml-3 text-red-800 bg-red-50 border-red-800 dark:bg-gray-800 dark:text-red-400" role="alert">
                 <div class="flex p-4 mr-auto">
                     {{ $message }}
 
@@ -48,8 +38,8 @@
         @break
 
     @case('warning')
-        <div x-data="{ show: true }" x-show="show">
-            <div class="text-sm rounded-md shadow-lg mb-3 ml-3 ml-3 text-yellow-800 bg-yellow-50 border-yellow-800 dark:bg-gray-800 dark:text-yellow-300" role="alert">
+        <div data-component="alert" x-data="{ show: true }" x-show="show">
+            <div class="text-sm rounded-md shadow-lg mb-3 ml-3 text-yellow-800 bg-yellow-50 border-yellow-800 dark:bg-gray-800 dark:text-yellow-300" role="alert">
                 <div class="flex p-4 mr-auto">
                     {{ $message }}
 
@@ -66,8 +56,8 @@
         </div>
         @break
     @case('success')
-        <div x-data="{ show: true }" x-show="show">
-            <div class="text-sm rounded-md shadow-lg mb-3 ml-3 ml-3 text-green-800 bg-green-100 border-green-800 dark:bg-gray-800 dark:text-green-400" role="alert">
+        <div data-component="alert" x-data="{ show: true }" x-show="show">
+            <div class="text-sm rounded-md shadow-lg mb-3 ml-3 text-green-800 bg-green-100 border-green-800 dark:bg-gray-800 dark:text-green-400" role="alert">
                 <div class="flex p-4 mr-auto">
                     {{ $message }}
 
@@ -84,8 +74,8 @@
         </div>
         @break
     @default
-        <div x-data="{ show: true }" x-show="show">
-            <div class="text-sm rounded-md shadow-lg mb-3 ml-3 ml-3 text-gray-800 bg-gray-50 border-green-800 dark:bg-gray-800 dark:text-gray-400" role="alert">
+        <div data-component="alert" x-data="{ show: true }" x-show="show">
+            <div class="text-sm rounded-md shadow-lg mb-3 ml-3 text-gray-800 bg-gray-50 border-green-800 dark:bg-gray-800 dark:text-gray-400" role="alert">
                 <div class="flex p-4 mr-auto">
                     {{ $message }}
 
