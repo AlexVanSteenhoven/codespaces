@@ -25,11 +25,6 @@ class AuthenticationController extends Controller
 
     public function redirect(string $provider)
     {
-        if ($provider === 'email') {
-            // TODO :: Implement login with email
-            dd($provider);
-        }
-
         try {
             return Socialite::driver($provider)->redirect();
         } catch (InvalidStateException $exception) {
@@ -61,7 +56,7 @@ class AuthenticationController extends Controller
             'avatar' => $retrievedUser->avatar,
             'provider_token' => $retrievedUser->token,
             'password' => Hash::make(Str::random())
-        ]);
+        ])->assignRole('user');
 
         Auth::login($user, true);
 
@@ -75,7 +70,7 @@ class AuthenticationController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('dashboard')->with('message', 'successfully logged in');
+            return redirect()->intended('dashboard')->with('success', 'successfully logged in');
         }
 
         if (Helpers::userUsesCorrectAuthProvider($request->input('email'), 'email')) {
@@ -90,6 +85,6 @@ class AuthenticationController extends Controller
     {
         Auth::logout();
 
-        return redirect('/');
+        return redirect('/')->with('success', 'successfully logged out');
     }
 }
