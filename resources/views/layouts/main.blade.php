@@ -18,12 +18,15 @@
                 document.documentElement.classList.remove('dark')
             }
         </script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     </head>
     <body class="bg-indigo-100 dark:bg-gray-900">
         @include('partials.navbar')
         @include('partials.alerts')
 
-        <main class="container flex flex-wrap items-center justify-between mx-auto">
+        @include('components.sidebar')
+        <main class="p-4 sm:ml-64 flex flex-wrap items-center justify-between mx-auto">
             @yield('content')
         </main>
 
