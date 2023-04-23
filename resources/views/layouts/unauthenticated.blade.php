@@ -20,7 +20,7 @@
         </script>
     </head>
     <body>
-        @include('partials.alerts')
+        @include('partials.alerts', ['layout' => 'unauthenticated'])
         <div class="bg-indigo-100 dark:bg-gray-900">
             @yield('content')
         </div>

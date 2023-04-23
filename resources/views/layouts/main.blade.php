@@ -23,10 +23,10 @@
     </head>
     <body class="bg-indigo-100 dark:bg-gray-900">
         @include('partials.navbar')
-        @include('partials.alerts')
+        @include('partials.alerts', ['layout' => 'authenticated'])
 
         @include('components.sidebar')
-        <main class="p-4 sm:ml-64 flex flex-wrap items-center justify-between mx-auto">
+        <main class="p-4 mt-20 sm:ml-72 flex flex-wrap items-center justify-between mx-auto">
             @yield('content')
         </main>
 

@@ -66,8 +66,9 @@ class AuthenticationController extends Controller
     public function login(UserLoginRequest $request): RedirectResponse
     {
         $credentials = $request->only(['email', 'password']);
+        $rememberMe = (bool)$request->input('remember');
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, $rememberMe)) {
             $request->session()->regenerate();
 
             return redirect()->route('app.dashboard')->with('success', 'successfully logged in');
