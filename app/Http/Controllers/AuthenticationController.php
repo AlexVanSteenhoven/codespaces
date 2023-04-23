@@ -60,7 +60,7 @@ class AuthenticationController extends Controller
 
         Auth::login($user, true);
 
-        return redirect('/dashboard');
+        return redirect()->route('app.dashboard')->with('success', 'successfully logged in');
     }
 
     public function login(UserLoginRequest $request): RedirectResponse
@@ -70,7 +70,7 @@ class AuthenticationController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('dashboard')->with('success', 'successfully logged in');
+            return redirect()->route('app.dashboard')->with('success', 'successfully logged in');
         }
 
         if (Helpers::userUsesCorrectAuthProvider($request->input('email'), 'email')) {
