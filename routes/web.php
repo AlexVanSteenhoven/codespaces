@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\App\ClientController;
+use App\Http\Controllers\App\ProjectController;
+use App\Http\Controllers\App\TaskController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
@@ -25,8 +28,12 @@ Route::post('/sign-in/email', [AuthenticationController::class, 'login'])->name(
 Route::get('/sign-in/{provider}/redirect', [AuthenticationController::class, 'redirect'])->name('auth.redirect');
 Route::get('/sign-in/{provider}/callback', [AuthenticationController::class, 'callback'])->name('auth.callback');
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('/dashboard', [ DashboardController::class, 'index']);
+Route::namespace('App')->prefix('app')->name('app.')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('clients', ClientController::class)->name('index', 'clients');
+    Route::resource('projects', ProjectController::class)->name('index', 'projects');
+    Route::resource('tasks', TaskController::class)->name('index', 'tasks');
+
 });
 
 require __DIR__.'/admin.php';
