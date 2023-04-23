@@ -21,7 +21,7 @@
     </head>
     <body>
         @include('partials.alerts', ['layout' => 'unauthenticated'])
-        <div class="bg-indigo-100 dark:bg-gray-900">
+        <div class="bg-indigo-100 dark:bg-gray-900 h-screen">
             @yield('content')
         </div>
 

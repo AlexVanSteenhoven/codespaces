@@ -31,7 +31,7 @@
                         </a>
                     </div>
                     <hr class="h-px mx-6 mt-6 mb-2 bg-gray-200 border-0 dark:bg-gray-600" />
-                    <form class="mx-6" method="POST" action="{{ route('auth.sign-in') }}">
+                    <form class="mx-6" method="POST" action="{{ route('auth.login.email') }}">
                         @csrf
                         <div class="mb-6">
                             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>

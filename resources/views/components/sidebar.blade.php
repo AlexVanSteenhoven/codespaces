@@ -20,6 +20,7 @@
                 </a>
             </li>
         </ul>
+        @role('administrator')
         <ul class="space-y-2 font-medium">
             <li class="p-2">
                 <span class="text-gray-900 dark:text-gray-300 pb-1 text-sm border-b-2 border-gray-700">Administrative Tools</span>
@@ -37,11 +38,12 @@
                 </a>
             </li>
             <li>
-        <a href="{{ route('admin.permissions') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                <a href="{{ route('admin.permissions') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                     <i class="fa-solid fa-shield"></i>
                     <span class="flex-1 ml-3 whitespace-nowrap">Permissions</span>
                 </a>
             </li>
+            @endrole
         </ul>
     </div>
 </aside>
