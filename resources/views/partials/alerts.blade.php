@@ -1,5 +1,5 @@
 @if(session('info') || session('warning') || session('error') || session('success') || session('message'))
-<div class="absolute {{ $layout === 'authenticated' ? 'top-20' : 'top-2' }} right-2 min-w-[350px] max-w-[350px]">
+<div class="absolute {{ $layout === 'authenticated' ? 'top-[4.5rem]' : 'top-2' }} right-2 min-w-[350px] max-w-[350px]">
     @if(session('info'))
         <x-alert :message="session('info')" type="info" />
     @endif
