@@ -12,6 +12,10 @@
         "laravel/socialite": "^5.6",
         "laravel/telescope": "^4.14",
         "laravel/tinker": "^2.8",
+        "livewire/livewire": "^2.12",
+        "openspout/openspout": "^4",
+        "power-components/livewire-powergrid": "^4.5",
+        "psr/simple-cache": "^3.0",
         "santigarcor/laratrust": "^8.2",
         "socialiteproviders/github": "^4.1",
         "socialiteproviders/gitlab": "^4.1"

@@ -18,6 +18,15 @@ return [
     'name' => env('APP_NAME', 'Laravel'),
 
     /*
+     |-------------------------------------------------------------------------
+     | OAuth Settings
+     |-------------------------------------------------------------------------
+     */
+    'oauth_enabled' => env('OAUTH_ENABLED', true),
+    'oauth_github_enabled' => env('OAUTH_GITHUB_ENABLED', true),
+    'oauth_gitlab_enabled' => env('OAUTH_GITLAB_ENABLED', true),
+
+    /*
     |--------------------------------------------------------------------------
     | Application Environment
     |--------------------------------------------------------------------------

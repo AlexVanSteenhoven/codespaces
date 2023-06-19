@@ -10,9 +10,14 @@ import Alpine from "alpinejs";
 window.axios = axios;
 window.Alpine = Alpine;
 
+import './../../vendor/power-components/livewire-powergrid/dist/powergrid'
+import './../../vendor/power-components/livewire-powergrid/dist/powergrid.css'
+
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 Alpine.start();
 
+import Datepicker from 'flowbite-datepicker/Datepicker';
+window.Datepicker = Datepicker();
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting

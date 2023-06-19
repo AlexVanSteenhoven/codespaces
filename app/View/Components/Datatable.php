@@ -8,12 +8,18 @@ use Illuminate\View\Component;
 
 class Datatable extends Component
 {
+    public array $tableHeaders;
+    public array $tableData;
+
     /**
      * Create a new component instance.
+     * @param array $tableHeaders - Define the headers for the table
+     * @param array $tableData - Define the data for the table
      */
-    public function __construct()
+    public function __construct(array $tableHeaders = [], array $tableData = [])
     {
-        //
+        $this->tableHeaders = $tableHeaders;
+        $this->tableData = $tableData;
     }
 
     /**
@@ -21,6 +27,11 @@ class Datatable extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.datatable');
+        $table = [
+            'headers' => $this->tableHeaders,
+            'rows' => $this->tableData
+        ];
+
+        return view('components.datatable', compact('table'));
     }
 }
