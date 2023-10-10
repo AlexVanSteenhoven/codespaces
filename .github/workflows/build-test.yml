@@ -1,0 +1,26 @@
+name: Run all PEST tests
+on: [push, pull_request]
+
+jobs:
+    build:
+      runs-on: ubuntu-latest
+      steps:
+          - uses: actions/checkout@v3
+
+          - name: Setup PHP
+            uses: shivammathur/setup-php@v2
+            with:
+              php-version: '8.0'
+              extensions: mbstring, zip, pcntl, bcmath, gd, pdo, pdo_mysql, exif, pcntl, tokenizer, xml, curl, fileinfo, json, intl, gmp, imagick, redis, mongodb, memcached, apcu, xdebug
+              coverage: none
+
+          - name: Run composer install
+            run: composer install -n --prefer-dist
+
+          - name: Prepare Laravel Application
+            run: |
+              cp .env.ci .env
+              php artisan key:generate
+
+          - name: Run tests
+            run: php artisan test
